@@ -11,7 +11,9 @@ const config = defineConfig({
     apiVersion: "2024-07-30", //use current date
     basePath: "/admin", //path where sanity studio will live
     plugins:[structureTool()], //need to use the sanity studio
-    schema: { types: [project] }
+    schema: { types: [project] },
+    // useCdn: true //ref: https://www.sanity.io/help/js-client-cdn-configuration
+
 });
 
 export default config;

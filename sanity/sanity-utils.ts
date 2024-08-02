@@ -1,8 +1,11 @@
 //all functions used to grab data
 
+
+import { Project } from "@/app/types/Project";
 import { createClient, groq } from "next-sanity";
 
-export async function getProjects() {
+//will display project array on all pages
+export async function getProjects(): Promise<Project[]> {
 
     const client =  createClient({
         projectId: "4lhd8m96",
