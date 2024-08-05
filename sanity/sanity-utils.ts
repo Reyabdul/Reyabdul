@@ -1,29 +1,61 @@
 //all functions used to grab data
 
-
-import { Project } from "@/app/types/Project";
+import { Project } from "@/types/Project";
 import { createClient, groq } from "next-sanity";
+import clientConfig from "./config/client-config";
+import { Page } from "@/types/Page";
 
 //will display project array on all pages
 export async function getProjects(): Promise<Project[]> {
-
-    const client =  createClient({
-        projectId: "4lhd8m96",
-        dataset: "production",
-        apiVersion: "2024-07-30",
-    });
-
-
-    //use API call and GROQ query to pull data from project section
-    return client.fetch(
-        groq`*[_type == "project"]{
+  //use API call and GROQ query to pull data from project section
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "project"]{
             _id,
-            createdAt,
+            _createdAt,
             name,
             "slug": slug.current,
             "image": image.asset->url,
             url,
             content
-        }`
-    )
+          }`
+  );
+}
+
+export async function getProject(slug: string): Promise<Project> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "project" && slug.current == $slug][0]{
+            _id,
+            _createdAt,
+            name,
+            "slug": slug.current,
+            "image": image.asset->url,
+            url,
+            content
+          }`,
+    { slug }
+  );
+}
+
+export async function getPages(): Promise<Page[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "page"]{
+      _id,
+      _createdAt,
+      title,
+      "slug": slug.current
+    }`
+  );
+}
+
+export async function getPage(slug): Promise<Page> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "page" && slug.current == $slug][0]{
+      _id,
+      _createdAt,
+      title,
+      "slug": slug.current,
+      content
+    }`,
+    { slug }
+  );
 }

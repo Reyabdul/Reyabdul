@@ -2,16 +2,17 @@
 
 import { defineConfig } from "sanity"; 
 import { structureTool } from "sanity/structure";
-import project from "./sanity/schemas/project-schema";
+import schemas from "./sanity/schemas"
+
 
 const config = defineConfig({
     projectId: "4lhd8m96",
     dataset: "production",
     title: "Personal Website",
-    apiVersion: "2024-07-30", //use current date
+    apiVersion: "2024-08-02", //use current date
     basePath: "/admin", //path where sanity studio will live
     plugins:[structureTool()], //need to use the sanity studio
-    schema: { types: [project] },
+    schema: { types: schemas }
     // useCdn: true //ref: https://www.sanity.io/help/js-client-cdn-configuration
 
 });
