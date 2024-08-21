@@ -1,39 +1,28 @@
-import { getProjects } from "@/sanity/sanity-utils";
-import Image from 'next/image';
-import Link from 'next/link';
+"use client";
 
-export default async function Home() {
-  const projects = await getProjects();
+import React, { useEffect, useState } from "react";
+
+//components
+import Loading from "./components/Loading";
+
+//pages
+import Home from "./(pages)/home/pages";
+
+//styles
+import "../globals.css";
+
+export default function Landing() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 5000);
+  }, []);
 
   return (
-    <div>
-      <h1 className="text-7xl font-extrabold">Hello I&apos;m
-        <span className="bg-gradient-to-r from-orange-400 via-red-500 to-purple-600 bg-clip-text text-transparent"> Rey!</span>
-      </h1>
-      <p className="mt-3 text-xl text-gray-600">Aloha everyone! Check out my projects!</p>
-      <h2 className="mt-24 font-bold text-gray-700 text-3xl">My Projects</h2>
-
-      <div className="mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-8">{projects.map((project) => (
-        <Link 
-        href={`/projects/${project.slug}`} 
-        key={project._id} 
-        className="border-2 border-gray-500 rounded-lg p-1 hover:scale-105 hover:border-blue-500 transition">
-          {project.image && (
-            <Image
-              src={project.image}
-              alt={project.name}
-              width={750}
-              height={300}
-              className="object-cover rounded-lg border border-gray-500"
-            />
-          )}
-          <div className="mt-2 font-extrabold bg-gradient-to-r from-orange-400 via-red-500 to-purple-600 bg-clip-text text-transparent">
-            {project.name}
-          </div>
-        </Link>
-      ))}
-      </div>
-    </div>
-  )
-
+    <>
+      <main className="main" id="main">
+        {loading ? <Loading /> : <Home />}
+      </main>
+    </>
+  );
 }

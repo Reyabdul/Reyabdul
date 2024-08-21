@@ -1,33 +1,278 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Site Stylesheet
+  1. Global Styles
+  2. Typography Styles
+  3. Variable CSS Styles
+  4. Page Styles
+  5. Media Queries Styles
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  Note: Components are styled within their own folder
+
+======================================== */
+
+/* 1. Global Styles
+======================================== */
+
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px red dashed;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+body{
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  overflow: hidden;
+  display: grid;
+  place-content: center;
+}
+
+main {
+  background-color: var(--background-color);
+}
+
+
+ul{
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+  transition: all .5s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+/*
+========================================
+  2. Variable CSS Styles
+======================================== */
+:root {
+--background-color: #000;
+--text-primary: #f2f2f2;
+--text-secondary: #FFF9AA;
+}
+
+
+/*
+======================================== 
+  3. Typography Styles
+======================================== */
+/*Google Fonts*/
+@import url('https://api.fontshare.com/v2/css?f[]=synonym@400&f[]=chillax@600&display=swap');
+
+p, a {
+  font-family: 'Synonym', sans-serif;
+  font-weight: normal;
+  color: var(--text-primary)
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Chillax', sans-serif;
+  color: var(--text-primary)
+}
+
+
+
+body,
+button,
+input,
+textarea{
+  font-family: 'Synonym', sans-serif;
+  font-size: 1rem;
+}
+
+/*
+========================================
+  4. Layout
+======================================== */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.section {
+  /* background-color: var(--background-primary); */
+  width: 100%;
+  max-width: 100%;
+}
+
+.section__title{
+  font-size: 2rem;
+  color: var(--text-primary);
+}
+
+.section__subtitle {
+  display: block;
+  font-size: 1.5rem;
+  margin: 0 0 4rem 0;
+}
+
+.section__title, 
+.section__subtitle {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.centered {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/*=========== BUTTONS =============*/
+
+.button {
+  display: inline-block;
+  background-color: var(--background-secondary);
+  color: var(--background-primary);
+  padding: 1.25rem 2rem;
+  border-radius: 1rem;
+  font-weight: 500;
+}
+
+.button:hover{
+  background-color: var(--text-secondary);
+}
+
+.button__icon {
+  background-color: var(--text-primary);
+}
+
+.button--flex {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* .btn-1 {
+  scale: 0.5;
+  display: block;
+  cursor: pointer;
+  color: white;
+  margin: 0 auto;
+  width: 140px;
+  white-space: nowrap;
+  position: absolute;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 30px;
+  overflow: hidden;
+  padding: 3px;
+  isolation: isolate;
+  right: 0;
+  font-size: 0.8rem;
+}
+
+.btn-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400%;
+  height: 100%;
+  opacity: 0;
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    115deg,
+    #4fcf70,
+    #fad648,
+    #a767e5,
+    #12bcfe,
+    #44ce7b
+  );
+  background-size: 25% 100%;
+  animation: an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop
+    0.75s linear infinite;
+  animation-play-state: paused;
+  translate: -5% 0%;
+  transition: translate 0.25s ease-out, opacity 0.175s ease-out;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.btn-1:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+  transition-duration: 0.75s;
+  translate: 0% 0%;
+}
+
+@keyframes an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop {
+  to {
+    transform: translateX(-25%);
   }
-} */
+}
+
+.btn-1 span {
+  position: relative;
+  display: block;
+  padding: 1rem 1.5rem;
+  font-size: 18px;
+  background: #000;
+  border-radius: 30px;
+  height: 100%;
+  text-align: center;
+}
+ */
+
+/*
+========================================
+  5. Media Queries Styles
+======================================== */
+
+/*=========== BREAKPOINTS =============*/
+/*Large  Screens and Devices (e.g.:DESKTOPS)*/
+@media screen and (max-width: 992px) {
+
+}
+
+/*Medium Screens and Devices (e.g.:TABLETS)*/
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 576px) {
+
+}
+
+/*Small Screens and Devices (e.g.:MOBILE)*/
+@media screen and (max-width: 390px) {
+
+}

@@ -1,0 +1,29 @@
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    width: 80%;
+    height: auto;
+    display: flex;
+
+}
+
+/* NavBar  */
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: lighter;
+    font-family: 'Chillax', sans-serif;
+}
+
+.links{
+    display: flex;
+    gap: 2rem;
+}
