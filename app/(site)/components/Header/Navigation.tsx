@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 
@@ -7,7 +5,7 @@ import Link from "next/link";
 
 //styles
 import "../../../globals.css";
-import "./header.css";
+import "./Header.css";
 
 export const NavLinks = [
 

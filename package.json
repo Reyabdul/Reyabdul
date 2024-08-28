@@ -20,7 +20,7 @@
     "react-dom": "^18",
     "sanity": "^3.52.4",
     "server-only": "^0.0.1",
-    "vercel": "^35.2.3"
+    "vercel": "^37.1.2"
   },
   "devDependencies": {
     "@types/node": "^20",
