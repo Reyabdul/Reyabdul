@@ -1,0 +1,177 @@
+.project {
+    width: 80%;
+    height: 80%;
+
+    .project-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+
+        .image-container {
+            width: 50%;
+            height: 100%;
+            display: grid;
+            place-content: center;
+
+            .project-image {
+                width: 400px;
+                height: 500px;
+                object-fit: cover;
+                align-self: center;
+            }
+        }
+
+        .details-container {
+            border: red 1px dashed;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            /* Blobs */
+            .blob-cont {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 20px;
+                width: 20px;
+                position: absolute;
+                right: 8rem;
+                bottom: 8rem;
+
+                .blob {
+                    border-radius: 100px;
+                    filter: blur(30px);
+                }
+
+                .yellow {
+                    background-color: var(--yellow);
+                    position: absolute;
+                    top: 20px;
+                    left: 10px;
+                    height: 100px;
+                    width: 100px;
+
+                    animation: yellow 8s infinite ease;
+                }
+
+                .orange {
+                    background-color: var(--orange);
+                    position: absolute;
+                    top: 20px;
+                    right: -20px;
+                    height: 100px;
+                    width: 125px;
+
+                    animation: orange 8s infinite ease;
+                }
+
+                .red {
+                    background-color: var(--red);
+                    position: absolute;
+                    right: 0;
+                    top: 30px;
+                    height: 125px;
+                    width: 100px;
+
+                    animation: red 8s infinite linear;
+                }
+            }
+
+        }
+    }
+
+}
+
+/* animations */
+
+.fade-in-left {
+    -webkit-animation: fade-in-left 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in-left 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+@keyframes fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Blobs */
+@keyframes yellow {
+    0% {
+      top: 20px;
+      left: 10px;
+      transform: scale(1);
+    }
+    30% {
+      top: 30px;
+      left: 15px;
+      transform: scale(1.2);
+    }
+    60% {
+      top: 10px;
+      left: 20px;
+      transform: scale(1.3);
+    }
+    100% {
+      top: 20px;
+      left: 10px;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes orange {
+    0% {
+      top: -20px;
+      right: -2px;
+      transform: scale(1.2);
+    }
+    30% {
+      top: 30px;
+      right: -20px;
+      transform: scale(1);
+    }
+    60% {
+      top: 20px;
+      right: 10px;
+      transform: scale(1);
+    }
+    100% {
+      top: 8px;
+      right: -2px;
+      transform: scale(1.2);
+    }
+  }
+  
+  @keyframes red {
+    0% {
+      top: 25px;
+      right: 0px;
+      transform: scale(1);
+    }
+    30% {
+      top: 1px;
+      right: 1px;
+      transform: scale(1.4);
+    }
+    60% {
+      top: 25px;
+      right: 10px;
+      transform: scale(1);
+    }
+    100% {
+      top: 25px;
+      right: 0px;
+      transform: scale(1);
+    }
+  }
+  

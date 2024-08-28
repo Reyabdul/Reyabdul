@@ -11,17 +11,13 @@ export default function PageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
+    <html lang="eg">
       <body>
-        <header>
-          <Header />
-        </header>
-        <main className="main" id="main">
-          {children}
-        </main>
-        <footer>
-          <Footer />
-        </footer>
+            <main className="main" id="main">
+              <Header />
+                {children}
+              <Footer />  
+            </main>
       </body>
     </html>
   );

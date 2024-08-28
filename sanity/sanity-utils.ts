@@ -1,9 +1,11 @@
 //all functions used to grab data
 
-import { Project } from "@/types/Project";
 import { createClient, groq } from "next-sanity";
-import clientConfig from "./config/client-config";
+import clientConfig from './config/client-config'
 import { Page } from "@/types/Page";
+import { Project } from "@/types/Project";
+import { Home } from "@/types/Home";
+
 
 //will display project array on all pages
 export async function getProjects(): Promise<Project[]> {
@@ -15,7 +17,10 @@ export async function getProjects(): Promise<Project[]> {
             name,
             "slug": slug.current,
             "image": image.asset->url,
+            alt,
             url,
+            github,
+            figma,
             content
           }`
   );
@@ -30,6 +35,9 @@ export async function getProject(slug: string): Promise<Project> {
             "slug": slug.current,
             "image": image.asset->url,
             url,
+            url,
+            github,
+            figma,
             content
           }`,
     { slug }
@@ -57,5 +65,22 @@ export async function getPage(slug: string): Promise<Page> {
       content
     }`,
     { slug }
+  );
+}
+
+export async function getHome(): Promise<Home[]> {
+  //use API call and GROQ query to pull data from project section
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "home"]{
+            _id,
+            _createdAt,
+            name,
+            headline,
+            subHeadline,
+            "slug": slug.current,
+            "image": image.asset->url,
+            url,
+            content
+          }`
   );
 }

@@ -1,9 +1,12 @@
 import Navigation from "./Navigation";
 
+import "../../../globals.css";
+import "./Header.css";
+
 export default function Header() {
     return (
-        <div className="header flex" id="header">
+        <header className="header flex" id="header">
             <Navigation />
-        </div>
+        </header>
     )
 }

@@ -1,0 +1,110 @@
+. {
+    border: red 1px dashed
+}
+
+.projects {
+    width: 80%;
+    height: 80%;
+    max-width: 80%;
+    display: flex;
+    gap: 2rem;
+
+
+    .project-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project-image {
+        width: 200px;
+        height: 350px;
+        object-fit: cover;
+        filter: grayscale(100%);
+        /* transform-origin: 65% 75%; */
+        transition: transform 0.6s, filter .5s ease-out;
+    }
+
+    .project-image:hover {
+        filter: grayscale(0%);
+        transform: scale(1.2);
+        overflow: hidden;
+    }
+
+    .image-square {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        filter: grayscale(100%);
+        /* transform-origin: 65% 75%; */
+        transition: transform 0.6s, filter .5s ease-out;
+    }
+
+
+    .image-square:hover {
+        filter: grayscale(0%);
+        transform: scale(1.2);
+        overflow: hidden;
+    }
+
+
+    .project-info {
+        visibility: hidden;
+        color: aliceblue;
+    }
+
+
+    .image-square:hover + .project-info {
+        display: block;
+    }
+    
+
+}
+
+/**
+ * ----------------------------------------
+ * animation fade-in-left
+ * ----------------------------------------
+ */
+@-webkit-keyframes fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 
+  @keyframes color-in {
+    0% {
+      -webkit-transform: grayscale(100%);
+      filter: grayscale(100%);
+      transform: scale(0);
+    }
+    100% {
+      -webkit-transform: grayscale(0%);
+      filter: grayscale(0%);
+      transform: scale(1.2);
+    }
+  }
+   */
